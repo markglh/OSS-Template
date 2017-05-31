@@ -339,6 +339,7 @@ Once everything is happy, create a release in github. Let’s go with `v0.0.2` a
 * [JCenter](https://bintray.com/bintray/jcenter) 
 * [OSS Sonatype Nexus](https://oss.sonatype.org/) 
 * [Maven Central](https://search.maven.org/)
+
 It can take some time to propagate all the way to Maven (I’ve seen it take hours). You can login to Bintray, navigate to the package and view the `Maven Central` tab to view when the last sync to Sonatype occurred.
 
 ## Phew!!
