@@ -74,7 +74,7 @@ addSbtPlugin("de.heikoseeberger" % "sbt-header"     % "1.8.0")
 
 Add the settings to your build.sbt
 ```scala
-.enablePlugins(AutomateHeaderPlugin)
+(project in file(".")).enablePlugins(AutomateHeaderPlugin)
 import de.heikoseeberger.sbtheader.license._
 
 lazy val headerSettings =
@@ -99,7 +99,7 @@ libraryDependencies += "org.slf4j" % "slf4j-nop" % "1.7.25" // Needed by sbt-git
 Then enabling and configuring it in the build.sbt
 
 ```scala
-.enablePlugins(AutomateHeaderPlugin, GitVersioning)
+(project in file(".")).enablePlugins(AutomateHeaderPlugin, GitVersioning)
 
 val VersionRegex = "v([0-9]+.[0-9]+.[0-9]+)-?(.*)?".r
 val MilestoneRegex = "^M[0-9]$".r
