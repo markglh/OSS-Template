@@ -1,4 +1,4 @@
-# Publishing Open Source Projects with TravisCI and SBT
+# Publishing Open Source Projects with Travis CI and SBT
 Picture the scene: you’ve finished your new shiny open source project but want to publish the artifacts so people can actually use it via maven, sbt, gradle, <insert dependency manager here>.
 
 So, how do we go about this? And more importantly where do we want to publish it?
