@@ -65,7 +65,7 @@ Before we leave Bintray, take note of your username and API key - we’ll need t
 There are a few things we want to take care of before releasing our project:
 
 #### Licencing
-Under what terms can people use our code? Firstly you need to choose a licence (I’d recommend Apache 2.0 or MIT), but we want this automatically adding to our source files. Fortunately there’s an [excellent plugin](https://github.com/sbt/sbt-header) just for this.
+Under what terms can people use our code? You need to choose a licence (I’d recommend Apache 2.0 or MIT), but we want this automatically adding to our source files. Fortunately there’s an [excellent plugin](https://github.com/sbt/sbt-header) just for this.
 
 Add the plugin to plugins.sbt
 ```scala
