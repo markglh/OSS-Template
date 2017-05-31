@@ -37,17 +37,18 @@ We can now create repositories under which our projects will live. However If th
 
 With that in mind, create a repository at the appropriate level:
 
-[image:7991EBCA-301A-44D8-9CFE-7C9514397766-91554-00040E19070E964B/82CA793B-DE2C-4D40-BBB9-FBD733453F64.png]
+![Create Bintray Repo](images/bintray-create-repo.png)
 
 Note that the name has no relation to the groupId, a number of projects can live under this repository so it’s more of a way to group projects. Select Maven as the type.
 
 Next, go back to the dashboard (or the organisation), click on the repo then click Edit. check the `GPG sign uploaded files using Bintray’s public/private key pair. This saves us having to create an add our own keys, though you can upload your own GPG key pair to your profile, and have Bintray use that if you prefer.
 
-[image:0F22283E-0E37-4A6A-9270-03B8FA3E6BE2-91554-00040EA14E383810/7671FD21-2034-4D31-A512-400A3B42D19A.png]
+![Edit Bintray Repo](images/bintray-edit-repo.png)
 
 #### Add a new package
 Under your repository, click `Add New Package`. The package is your application.
-[image:E96C6B24-AC63-4B79-B4A2-9055ED405F9E-91554-00040EEC0AE79A9C/FD94D52B-6838-4AA4-8BDF-3CF206FF0963.png]
+
+![Add Bintray Package](images/bintray-add-package.png)
 
 We must now configure the application to publish to JCenter and JFrog OSS. On the repository screen, click the package.
 * On the general tab, click `Add to JCenter`
