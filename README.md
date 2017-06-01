@@ -4,7 +4,7 @@ Picture the scene: you’ve finished your new shiny open source project but want
 So, how do we go about this? And more importantly where do we want to publish it?
 
 ## Sonatype vs Maven Central vs Bintray
-The traditional place to publish `jars`  is  [Maven Central](https://search.maven.org/), pretty much every dependency manager will pull from here, to do this you generally use [OSS Sonatype](http://central.sonatype.org/pages/ossrh-guide.html) which will synchronise with Maven Central. However most (but not all) will now also pull from Bintray, specifically JCenter - which is effectively a like for like replacement for Maven Central - with a much more user friendly (though by no means perfect) interface. SBT Plugins are one example which [favour bintray](http://www.scala-sbt.org/0.13/docs/Bintray-For-Plugins.html).
+The traditional place to publish `jars`  is  [Maven Central](https://search.maven.org/), pretty much every dependency manager will pull from there. To do this you generally use [OSS Sonatype](http://central.sonatype.org/pages/ossrh-guide.html), which will synchronise with Maven Central. However most (but not all) will now also pull from Bintray, specifically JCenter - which is effectively a like for like replacement for Maven Central, with a much more user friendly (though by no means perfect) interface. SBT Plugins are one example which [favour Bintray](http://www.scala-sbt.org/0.13/docs/Bintray-For-Plugins.html).
 
 We’ll come back to this soon, but we also want to talk about snapshots (or any non-final artifact) that we want to publish too.  As [Jan explained previously](http://www.cakesolutions.net/teamblogs/publishing-artefacts-to-oss-sonatype-nexus-using-sbt-and-travis-ci), Sonatype provide a dedicated repository for snapshots. JFrog (The company behind Bintray) have followed suit and provide [JFrog OSS](https://www.jfrog.com/open-source/), which is free for open source projects and integrates nicely with Bintray - we’ll be using this for our snapshots.
 
@@ -24,6 +24,8 @@ First off, we need to create a Sonatype account - this requires creating a JIRA 
 * [ Create your JIRA account](https://issues.sonatype.org/secure/Signup!default.jspa)
 * [Create a new Project Ticket](https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&pid=10134)
 
+<img src="images/sonatype-jira.png" width=60% >
+
 The ticket should have a `reverse dns` groupId (com.xxx) and a valid unique `Project URL` and `SCM URL` (you can just use the github project address).
 
 ### Bintray
@@ -31,9 +33,9 @@ The ticket should have a `reverse dns` groupId (com.xxx) and a valid unique `Pro
 #### Create and setup an account
 We now need to create our Bintray account, which will eventually sync to Maven via Sonatype. So [Create Your Bintray Account](https://bintray.com/signup/oss)
 
-Immediately  [edit the account](https://bintray.com/profile/edit?tab=Accounts) ,  then under the `Accounts` section add your Sonatype username created previously.
+Immediately  [edit the account](https://bintray.com/profile/edit?tab=Accounts),  then under the `Accounts` section add your Sonatype username created previously.
 
-We can now create repositories under which our projects will live. However If this is an organisation, rather than a personal account - you want to first create an organisation and have the repositories live under the organisation. This will allow you to grant multiple users permission to access the repositories.
+We can now create repositories under which our projects will live. However If this is an organisation, rather than a personal account, you want to first create an organisation and have the repositories live under the organisation. This will allow you to grant multiple users permission to access the repositories.
 
 With that in mind, create a repository at the appropriate level:
 
@@ -41,7 +43,7 @@ With that in mind, create a repository at the appropriate level:
 
 Note that the name has no relation to the groupId, a number of projects can live under this repository so it’s more of a way to group projects. Select Maven as the type.
 
-Next, go back to the dashboard (or the organisation), click on the repo then click Edit. check the `GPG sign uploaded files using Bintray’s public/private key pair. This saves us having to create an add our own keys, though you can upload your own GPG key pair to your profile, and have Bintray use that if you prefer.
+Next, go back to the dashboard (or the organisation), click on the repo then click Edit. check the `GPG sign uploaded files using Bintray’s public/private key pair`. This saves us having to create an add our own keys, though you can upload your own GPG key pair to your profile, and have Bintray use that if you prefer.
 
 <img src="images/bintray-edit-repo.png" width=60% >
 
@@ -55,7 +57,9 @@ We must now configure the application to publish to JCenter and JFrog OSS. On th
 	* **check “Host my snapshot build artifacts on the OSS Artifactory … ”**
 	* Enter the same groupId as used on Sonatype (com.xxxx)
 	* This will take a day or two to get approved, once approved you can [login](https://oss.jfrog.org/webapp/#/login) to JFrog OSS using your bintray username and **API Key** (Found under your account settings).
-	* **Note**: I’ve previously had issues where they’ve granted incorrect permission on JFrog OSS, causing a `Forbidden` response when trying to publish - if this happens and you’re sure the credentials are correct, it’s worth contacting them for help.
+*Note**: I’ve previously had issues where they’ve granted incorrect permissions on JFrog OSS, causing a `Forbidden` response when trying to publish - if this happens and you’re sure the credentials are correct, it’s worth contacting them for help.
+
+<img src="images/bintray-jcenter.png" width=60% >
 
 **We need to revisit here to configure the Maven Central tab once we’ve published our first package (it’s disabled until then).**
 
