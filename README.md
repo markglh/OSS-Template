@@ -68,6 +68,8 @@ We must now configure the application to publish to JCenter and JFrog OSS. On th
 
 Before we leave Bintray, take note of your username and API key - we’ll need that later!
 
+Once the request to publish to JCenter/JFrog OSS is approved, you can login to JFrog OSS [here](https://oss.jfrog.org/artifactory/webapp/#/home) using your Bintray username and API Key.
+
 ### Configure your build.sbt
 There are a few things we want to take care of before releasing our project:
 
