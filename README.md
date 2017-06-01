@@ -28,6 +28,8 @@ First off, we need to create a Sonatype account - this requires creating a JIRA 
 
 The ticket should have a `reverse dns` groupId (com.xxx) and a valid unique `Project URL` and `SCM URL` (you can just use the github project address).
 
+Once that's approved, you can login [here](https://oss.sonatype.org/#welcome) with your JIRA credentials.
+
 ### Bintray
 
 #### Create and setup an account
@@ -58,9 +60,9 @@ We must now configure the application to publish to JCenter and JFrog OSS. On th
 	* Enter the same groupId as used on Sonatype (com.xxxx)
 	* This will take a day or two to get approved, once approved you can [login](https://oss.jfrog.org/webapp/#/login) to JFrog OSS using your bintray username and **API Key** (Found under your account settings).
 
-**Note**: I’ve previously had issues where they’ve granted incorrect permissions on JFrog OSS, causing a `Forbidden` response when trying to publish - if this happens and you’re sure the credentials are correct, it’s worth contacting them for help.
-
 <img src="images/bintray-jcenter.png" width=80% >
+
+**Note**: I’ve previously had issues where they’ve granted incorrect permissions on JFrog OSS, causing a `Forbidden` response when trying to publish - if this happens and you’re sure the credentials are correct, it’s worth contacting them for help.
 
 **We need to revisit here to configure the Maven Central tab once we’ve published our first package (it’s disabled until then).**
 
