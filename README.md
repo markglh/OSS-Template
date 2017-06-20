@@ -352,7 +352,7 @@ Once everything is happy, create a release in github. Let’s go with `v0.0.2` a
 It can take some time to propagate all the way to Maven (I’ve seen it take hours). You can login to Bintray, navigate to the package and view the `Maven Central` tab to view when the last sync to Sonatype occurred.
 
 ## Phew!!
-We achieved a lot, out shiny new application has automatic code formatting, code coverage published to Coveralls, automatic versioning and automatic releasing (everywhere!) of both final, milestone and snapshot versions, based on tags - not to mention automated compilation and testing of pull requests prior to merging. Enjoy!!
+We've achieved a lot, our shiny new application has automatic code formatting, code coverage published to Coveralls, automatic versioning and automatic releasing (everywhere!) of both final, milestone and snapshot versions, based on tags - not to mention automated compilation and testing of pull requests prior to merging. Enjoy!!
 
 ## References
 * [Painless release with SBT - Byjean](http://blog.byjean.eu/2015/07/10/painless-release-with-sbt.html)
