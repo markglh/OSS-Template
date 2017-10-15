@@ -340,6 +340,14 @@ Let’s walk through this step by step
 
 You’ll now see two new sections in the `travis.yml` file, `env` and `before_install`. Travis will automatically run these steps as part of the build. Notice in the `script` section that we expect the `.artifactory` and `.credentials` to be present, then copy them into the Travis home directory from `.publishing`
 
+One more thing, we don't want to run the decryption unless we're on the `master` branch (we don't publish form pull requests). Furthermore, for security travis prevents the decryption happening from forked repos. So let's make this conditional:
+```YAML
+before_install:
+- 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then openssl aes-256-cbc -K $encrypted_09ef3e55c311_key -iv $encrypted_09ef3e55c311_iv -in secrets.tar.enc -out secrets.tar -d; fi'
+```
+
+Above, we've updated the `before_install` section to skip the command when we're buliding a pull request. Note that you can't copy and paste the above, the values will differ.
+
 ## Finishing off
 That’s it! We can now test our new setup. Commit the code and push it up to github. A build should be kicked off, publishing a snapshot to the [JFrog OSS](https://www.jfrog.com/open-source/) artifactory. If the build fails, make sure you’ve formatted the code locally first, you can do this by running `sbt scalafmt`.
 
