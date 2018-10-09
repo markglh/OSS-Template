@@ -259,7 +259,7 @@ project.git = true
 //newlines.afterImplicitKWInVerticalMultiline=false
 ```
 
-We can now format out code by running `sbt scalafmt`, we’ll be taking advantage of this later to automatically fail builds which don’t conform.
+We can now format our code by running `sbt scalafmt`, we’ll be taking advantage of this later to automatically fail builds which don’t conform.
 Code coverage will be generated and published to Coveralls by running `sbt coverageReport coveralls`
 
 ### Travis CI
